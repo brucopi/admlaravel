@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'tenant_id',
+        'name', 'email', 'password', 'role_id',
     ];
 
     /**
@@ -49,19 +49,22 @@ class User extends Authenticatable
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeTenantUser(Builder $query)
+    public function scopeRoleUser(Builder $query)
     {
-        return $query->where('tenant_id', auth()->user()->tenant_id);
+        return $query->where('role_id', auth()->user()->role_id);
     }
 
 
     /**
      * Tenant
      */
+
+     /*
     public function tenant()
     {
         return $this->belongsTo(Tenant::class);
     }
+    */
 
     /**
      * Get Roles

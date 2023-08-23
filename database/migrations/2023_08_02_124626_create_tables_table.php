@@ -11,19 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tables', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('tenant_id');
-            $table->uuid('uuid');
-            $table->string('identify');
-            $table->string('description')->nullable();
-            $table->timestamps();
-
-            $table->foreign('tenant_id')
-                        ->references('id')
-                        ->on('tenants')
-                        ->onDelete('cascade');
-        });
+        
     }
 
     /**

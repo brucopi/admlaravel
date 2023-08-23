@@ -306,14 +306,21 @@ return [
             'text'        => 'Grafico 1',
             'url'         => 'admin/grafico1',
             'icon'        => 'far fa-fw fa-file', 
-            'can'         => 'tela1',  
+            'can'         => 'grafico1',  
             
         ],
         [
             'text'        => 'Tela 2',
-            'url'         => 'admin/tela',
+            'url'         => 'admin/tela2',
             'icon'        => 'far fa-fw fa-file',  
             'can'         => 'tela2',           
+            
+        ],
+        [
+            'text'        => 'Tela 3',
+            'url'         => 'admin/tela3',
+            'icon'        => 'far fa-fw fa-file',  
+            'can'         => 'tela3',           
             
         ],
         [
@@ -338,13 +345,13 @@ return [
             'can'         => 'listagem_permission',            
             
         ],
-        [
+     /*   [
             'text'        => 'Tenants',
             'url'         => 'admin/tenants',
             'icon'        => 'far fa-fw fa-file',
             'can'         => 'tenants',            
             
-        ],
+        ],  */
         [
             'text'        => 'Usuários',
             'url'         => 'admin/users',

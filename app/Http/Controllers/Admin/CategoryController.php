@@ -143,4 +143,6 @@ class CategoryController extends Controller
 
         return view('admin.pages.categories.index', compact('categories', 'filters'));
     }
+
+    
 }

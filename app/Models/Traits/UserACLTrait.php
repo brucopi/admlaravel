@@ -2,13 +2,13 @@
 
 namespace App\Models\Traits;
 
-use App\Models\Tenant;
+
 
 trait UserACLTrait
 {
     public function permissions(): array
     {
-        $permissionsPlan = $this->permissionsPlan();
+        
         $permissionsRole = $this->permissionsRole();
 
         $permissions = [];
@@ -17,23 +17,6 @@ trait UserACLTrait
                 array_push($permissions, $permission);
         }
         
-        return $permissions;
-    }
-
-    public function permissionsPlan(): array
-    {
-        // $tenant = $this->tenant;
-        // $plan = $tenant->plan;
-        $tenant = Tenant::with('plan.profiles.permissions')->where('id', $this->tenant_id)->first();
-        $plan = $tenant->plan;
-
-        $permissions = [];
-        foreach ($plan->profiles as $profile) {
-            foreach ($profile->permissions as $permission) {
-                array_push($permissions, $permission->name);
-            }
-        }
-
         return $permissions;
     }
 
@@ -61,8 +44,5 @@ trait UserACLTrait
         return in_array($this->email, config('acl.admins'));
     }
 
-    public function isTenant(): bool
-    {
-        return !in_array($this->email, config('acl.admins'));
-    }
+    
 }

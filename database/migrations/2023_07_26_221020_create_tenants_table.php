@@ -11,6 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+        /*
         Schema::create('tenants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('plan_id');
@@ -36,6 +38,8 @@ return new class extends Migration
 
             $table->foreign('plan_id')->references('id')->on('plans');
         });
+
+        */
     }
 
     /**

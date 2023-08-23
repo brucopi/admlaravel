@@ -14,8 +14,7 @@ class UserController extends Controller
     public function __construct(User $user)
     {
         $this->repository = $user;
-
-        $this->middleware(['can:users']);
+        $this->middleware('can:users'); 
     }
 
     /**
@@ -25,7 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->repository->latest()->tenantUser()->paginate();
+        $users = $this->repository->latest()->roleUser()->paginate();
 
         return view('admin.pages.users.index', compact('users'));
     }
@@ -49,9 +48,10 @@ class UserController extends Controller
     public function store(StoreUpdateUser $request)
     {
         $data = $request->all();
-        $data['tenant_id'] = auth()->user()->tenant_id;
+        
+        $data['role_id'] = auth()->user()->role_id;
         $data['password'] = bcrypt($data['password']); // encrypt password
-
+        
         $this->repository->create($data);
 
         return redirect()->route('users.index');
@@ -146,9 +146,11 @@ class UserController extends Controller
                                 }
                             })
                             ->latest()
-                            ->tenantUser()
+                            //->tenantUser()
                             ->paginate();
 
         return view('admin.pages.users.index', compact('users', 'filters'));
     }
+
+    
 }

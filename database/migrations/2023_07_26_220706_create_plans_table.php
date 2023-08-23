@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        /*
         Schema::create('plans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
@@ -19,6 +20,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->timestamps();
         });
+        */
     }
 
     /**

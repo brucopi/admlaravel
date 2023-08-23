@@ -35,8 +35,10 @@ Route::prefix('admin')
 
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::get('/grafico1', [App\Http\Controllers\HomeController::class, 'grafico1'])->name('grafico1');
-        Route::get('/tela', [App\Http\Controllers\HomeController::class, 'tela'])->name('tela');
+        Route::get('/tela2', [App\Http\Controllers\Tela2Controller::class, 'tela2'])->name('tela2');
+        Route::get('/tela3', [App\Http\Controllers\Tela3Controller::class, 'tela3'])->name('tela3');
 
+        
         /**
          * Role x User
          */

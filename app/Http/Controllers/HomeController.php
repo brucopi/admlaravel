@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+
+    
+
+
+
     /**
      * Create a new controller instance.
      *
@@ -15,7 +21,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('can:tela1');
+        $this->middleware('can:home');
     }
 
     /**
@@ -25,8 +31,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+       
+        //dd(Auth::user()->tenant_id);
+
+
+        
         return view('home');
     }
+
+    
 
     public function grafico1(Request $request)
     {
@@ -35,14 +48,8 @@ class HomeController extends Controller
 
         return view('grafico1', compact('users'));
 
-    }
+    }   
 
-    public function tela()
-    {
-
-       // dd("parou aqui");
-        return view('tela');
-
-    }
+    
 
 }
