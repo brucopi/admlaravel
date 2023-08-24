@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Monolog\Handler\WebRequestRecognizerTrait;
 
 class RegisterController extends Controller
 {
@@ -69,7 +70,34 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
+        
+        
+        if(count(Role::all()) <1 )
+        {
 
-        dd('entrou');
+
+            
+            $role = Role::created([
+                "name"=>'home',
+                "description"=>'home'
+            ]);
+
+            $user = User::create([
+                "name" => "Admin",
+                "email" => "admin@email.com.br",
+                "password"=> bcrypt('123456'),
+                "role_id" => $role->id,
+            ]);
+        }else{
+            $role = Role::first();
+            $user = User::create([
+                "name" => "Admin",
+                "email" => "admin@email.com.br",
+                "password"=> bcrypt('123456'),
+                "role_id" => $role->id,
+            ]);
+        }
+        //dd("cadastrar somente logado");
+        return $user;
     }
 }
